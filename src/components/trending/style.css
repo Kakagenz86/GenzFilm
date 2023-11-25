@@ -1,0 +1,10 @@
+.trending-card {
+    height: auto;
+    margin: 5px;
+    padding: 3px;
+    background-color: black;
+}
+
+.trending-img {
+    height: 400px;
+}

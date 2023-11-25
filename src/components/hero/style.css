@@ -1,0 +1,14 @@
+.hero {
+    height: 300px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 5px 5px black;
+    letter-spacing: 5px;
+}

@@ -1,0 +1,17 @@
+.my-bg {
+    height: 100vh;
+    background: url("../../assets/images/bg/main.jpg");
+    background-size: cover;
+}
+
+.trending-bg {
+    height: auto;
+    background: url("../../assets/images/bg/scifi.jpg");
+    background-size: cover;
+}
+
+.superhero-bg {
+    height: auto;
+    background: url("../../assets/images/bg/black.jpg");
+    background-size: cover;
+}
