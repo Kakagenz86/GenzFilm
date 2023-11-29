@@ -9,7 +9,7 @@ const NavigationBar = () => {
                     <NavbarBrand href='/' className='fw-bold'>GENZFILM</NavbarBrand>
                     <Nav>
                         <Nav.Link href='#trending' className='fw-semibold'>TRENDING</Nav.Link>
-                        <Nav.Link href='#superhero' className='fw-semibold'>SUPERHERO</Nav.Link>
+                        <Nav.Link href='#superhero' className='fw-semibold'>...</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

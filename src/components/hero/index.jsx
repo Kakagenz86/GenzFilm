@@ -8,8 +8,8 @@ const Hero = () => {
                 <Container className='text-white text-center d-flex justify-content-center align-item-center'>
                     <Row>
                         <Col>
-                        <div className='hero-title'>NONTON GRATIS</div>
-                        <div className='hero-title'>GAK PAKE KARCIS</div>
+                        <div className='hero-title'>NONTON FILM?</div>
+                        <div className='hero-title'>DI GENZFILM AJA</div>
                         <div className="hero-btn mt-4">
                             <Button variant='dark' href='#trending'>Lihat Semua List</Button>
                         </div>

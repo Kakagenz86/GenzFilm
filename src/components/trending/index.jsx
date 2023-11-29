@@ -1,113 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Card, Container, Row, Col, Image, CardText } from 'react-bootstrap';
 import './style.css'
-import { Card, Container, Row, Col, Image } from 'react-bootstrap';
-import flash from '../../assets/images/trending/flash.jpg'
-import blackwidow from '../../assets/images/trending/blackwidow.jpg'
-import captainamerica from '../../assets/images/trending/captainamerica.jpg'
-import ironman from '../../assets/images/trending/ironman.jpg'
-import joker from '../../assets/images/trending/joker.jpg'
-import robinhood from '../../assets/images/trending/robinhood.jpg'
 
 const Trending = () => {
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        handleMovie();
+    }, []);
+
+    const handleMovie = () => {
+        const apiKey = 'f136764a7005bddc0cbb15a16ad3672a';
+        const apiUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`;
+
+        axios
+            .get(apiUrl)
+            .then((res) => {
+                console.log(res);
+                setMovies(res.data.results);
+            })
+            .catch((err) => console.log(err));
+    };
+
     return (
         <Container id='trending'>
             <br />
             <br />
             <h1 className='text-white fw-semibold mb-3'>TRENDING MOVIES</h1>
             <Row>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={flash} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>FLASH</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={blackwidow} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>BLACK WIDOW</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={captainamerica} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>CAPTAIN AMERICA</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={ironman} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>IRON MAN</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={joker} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>JOKER</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
-                <Col md={4}>
-                    <Card className=" trending-card">
-                    <Image src={robinhood} alt="Card image" className='trending-img'/>
-                    <div className="bg-dark">
-                        <div className='p-2 text-white'>
-                            <Card.Title className='text-center'>ROBIN HOOD</Card.Title>
-                            <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                            </Card.Text>
-                            <Card.Text>Last updated 3 mins ago</Card.Text>
-                        </div>
-                    </div>
-                    </Card>
-                </Col>
+                {movies.map((movie) => (
+                    <Col md={4} key={movie.id}>
+                        <Card className='trending-card'>
+                            <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='Card image' className='trending-img' />
+                            <div className='bg-dark'>
+                                <div className='p-2 text-white'>
+                                    <Card.Title className='text-center'>{movie.title || movie.name}</Card.Title>
+                                    <Card.Text>{movie.overview}</Card.Text>
+                                    <div className='trending-text'>
+                                        <Card.Text>Rilis: {movie.release_date}</Card.Text>
+                                        <Card.Text>Popularitas: {movie.popularity}</Card.Text>
+                                        <Card.Text>Vote: {movie.vote_count}</Card.Text>
+                                    </div>
+                                </div>
+                            </div>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
         </Container>
     );
-}
+};
 
 export default Trending;

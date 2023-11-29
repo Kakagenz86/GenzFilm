@@ -3,7 +3,6 @@ import './style.css'
 import NavigationBar from '../../components/navbar';
 import Hero from '../../components/hero'
 import Trending from '../../components/trending'
-import SuperHero from '../../components/superhero'
 
 const LandingPages = () => {
     return (
@@ -14,9 +13,6 @@ const LandingPages = () => {
             </div>
             <div className="trending-bg">
                 <Trending/>
-            </div>
-            <div className='superhero-bg'>
-                <SuperHero/>
             </div>
         </div>
     );
