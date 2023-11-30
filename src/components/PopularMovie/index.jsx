@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Card, Container, Row, Col, Image} from 'react-bootstrap';
 import './style.css'
@@ -81,12 +82,7 @@ const PopularMovie = () => {
                             <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='Card image' className='popular-img' />
                                 <div className='popular-text'>
                                     <Card.Title className='popular-title'>{movie.title}</Card.Title>
-                                    {/* <Card.Text>{movie.overview}</Card.Text>
-                                    <div className='popular-text'>
-                                        <Card.Text>Rilis: {movie.release_date}</Card.Text>
-                                        <Card.Text>Popularitas: {movie.popularity}</Card.Text>
-                                        <Card.Text>Vote: {movie.vote_count}</Card.Text>
-                                    </div> */}
+                                <Link to={`/detail/${movie.id}`}><button className='popular-btn-detail'>Lihat</button></Link>
                                 </div>
                         </Card>
                     </Col>
