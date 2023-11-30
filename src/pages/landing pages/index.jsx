@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import NavigationBar from '../../components/navbar';
 import Hero from '../../components/hero'
-import Trending from '../../components/trending'
+import PopularMovie from '../../components/PopularMovie';
 
 const LandingPages = () => {
     return (
@@ -11,8 +11,8 @@ const LandingPages = () => {
                 <NavigationBar/>
                 <Hero/>
             </div>
-            <div className="trending-bg">
-                <Trending/>
+            <div className="popular-bg">
+                <PopularMovie/>
             </div>
         </div>
     );
